@@ -1,0 +1,272 @@
+@keyframes _rk-timepicker-enter {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes _rk-timepicker-exit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+rk-timepicker {
+  display: none;
+}
+
+
+.rk-timepicker {
+  display: block;
+  width: 328px;
+  padding: 24px;
+  border-radius: var(--mat-sys-corner-extra-large);
+  background-color: var(--mat-sys-surface-container-high);
+}
+
+.rk-timepicker-panel {
+  animation: _rk-timepicker-enter 120ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.rk-timepicker-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.rk-timepicker-container-hide {
+  opacity: 0;
+}
+
+.rk-timepicker-headline {
+  width: 100%;
+}
+
+.rk-timepicker-headline, .rk-time-input-support-label {
+  font: var(--mat-sys-label-medium);
+  color: var(--mat-sys-on-surface-variant);
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+// input
+
+.rk-time-input-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font: var(--mat-sys-display-large);
+}
+
+.rk-time-input-label-container {
+  position: relative;
+}
+
+.rk-time-input-support-label {
+  position: absolute;
+  bottom: -40px;
+}
+
+.rk-time-selector-container {
+  width: 98px;
+  height: 78px;
+  border-radius: var(--mat-sys-corner-small);
+  background-color: var(--mat-sys-surface-container-highest);
+  color: var(--mat-sys-on-surface);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.rk-time-selector-container > input {
+  all: unset;
+  width: 100%;
+  text-align: center;
+}
+
+.rk-time-selector-container-selected {
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.rk-time-divider {
+  width: 22px;
+  text-align: center;
+}
+
+.rk-period-selector-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  border-radius: var(--mat-sys-corner-small);
+  user-select: none;
+  border: 1px solid var(--mat-sys-outline);
+  font: var(--mat-sys-title-medium);
+}
+.rk-period-selector {
+  width: 48px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--mat-sys-on-surface-variant);
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.rk-period-selector-container > div:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--mat-sys-outline);
+}
+
+.rk-period-selector-container > div:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.rk-period-selector-selected {
+  background-color: var(--mat-sys-tertiary-container);
+  color: var(--mat-sys-on-tertiary-container);
+}
+
+// dial
+
+.rk-timepicker-dial {
+  display: block;
+  background-color: var(--mat-sys-surface-container-highest);
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.rk-dial-animated {
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, height 250ms ease-in-out, margin 250ms ease-in-out;
+}
+
+.rk-dial-closed {
+  transform: scale(0);
+  opacity: 0;
+  height: 0px;
+  margin: 0px;
+}
+
+.rk-dial-size {
+  width: 256px;
+  height: 256px;
+}
+
+.rk-clock-dial-label {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--mat-sys-body-large);
+  color: var(--mat-sys-on-surface);
+}
+
+.rk-cliped-label {
+  background-color: var(--mat-sys-primary);
+  clip-path: circle(24px at calc(100% - 26px) 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  cursor: pointer;
+  .rk-clock-dial-label {
+    color: var(--mat-sys-on-primary);
+  } 
+}
+
+.rk-dial-selector {
+  width: 104px;
+  height: 2px;
+  top: 127px;
+  left: 128px;
+  background-color: var(--mat-sys-primary);
+  position: absolute;
+  transform-origin: left center;
+  transform: rotate(0deg);
+}
+
+.rk-pivot-point {
+  background-color: var(--mat-sys-primary);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 124px;
+  left: 124px;
+}
+
+.rk-timepicker-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.rk-timepicker-mode-button {
+  color: var(--mat-sys-on-surface-variant)
+}
+
+.rk-timepicker-landscape:not(.rk-timepicker-editable) {
+  width: 560px;
+  .rk-timepicker-headline {
+    margin-bottom: 0px;
+  }
+
+  .rk-timepicker-container {
+    justify-content: space-between;
+  }
+
+  .rk-time-input-field {
+    width: 220px;
+    flex-wrap: wrap;
+  }
+  .rk-period-selector-container {
+    width: 100%;
+    flex-direction: row;
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+
+  .rk-period-selector-container > div:first-child {
+    width: 100%;
+    border: 0px;
+    border-radius: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: 1px solid var(--mat-sys-outline);
+  }
+  
+  .rk-period-selector-container > div:last-child {
+    width: 100%;
+    border-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}

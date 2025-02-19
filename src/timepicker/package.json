@@ -1,0 +1,26 @@
+{
+  "name": "@redkhat/timepicker",
+  "version": "0.0.1",
+  "keywords": ["angular", "material", "timepicker", "material3", "material 3", "materialyou", "material you", "angular19", "angular 19", "clock"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redkhat/timepicker.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.1.0",
+    "@angular/core": "^19.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "exports": {
+    ".": {
+      "sass": "./_rk-timepicker-theme.scss"
+    }
+  },
+  "sideEffects": false,
+  "license": "MIT"
+}
