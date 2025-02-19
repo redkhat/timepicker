@@ -6,9 +6,7 @@ This project contains a series of time selection components. The timepicker allo
 For features like time ranges or specific hour selection, Angular's official methods are recommended.
 
 ## Demo
-Under construction
- <!-- [RkTimepicker](https://rktimepicker.firebaseapp.com) -->
-
+ [RkTimepicker](https://redkhat.github.io/timepicker/)
 
 ## Install components and dependencies
 

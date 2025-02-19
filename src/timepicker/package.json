@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/redkhat/timepicker.git"
   },
+  "homepage": "https://redkhat.github.io/timepicker/",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },

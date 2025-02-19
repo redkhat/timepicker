@@ -10,7 +10,12 @@
     "test": "ng test"
   },
   "keywords": ["angular", "material", "timepicker", "material3", "material 3", "materialyou", "material you", "angular19", "angular 19", "clock"],
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redkhat/timepicker"
+  },
+  "homepage": "https://redkhat.github.io/timepicker/",
+  "private": false,
   "dependencies": {
     "@angular/animations": "^19.0.0",
     "@angular/cdk": "^19.1.4",
