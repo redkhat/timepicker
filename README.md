@@ -3,7 +3,7 @@
 This project contains a series of time selection components. The timepicker allows users to select a time from a clock-like interface. The timepicker is built using `Angular 19+` and `Angular Material 19+`.
 
 > **_NOTE:_**  `RkTimepicker` and `RKClock` is not a substitute for the standard Angular Material timepicker.
-For features like time ranges or specific hour selection, Angular's official methods are recommended.
+For features like time ranges or specific hour selection Angular's official methods are recommended.
 
 ## Demo
 Under construction
