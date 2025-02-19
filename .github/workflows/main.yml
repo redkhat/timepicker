@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Setup NodeJS
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.2.0
+        with:
+          node-version: '22.x'
+      # Cache nodemodule
+      - name: Cache npm dependencies
+        uses: actions/cache@v3.4.2
+        id: cache-npm # ID to reference this step later
+        with:
+          path: node_modules # Path of the directory to cache
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }} # Unique key for the cache
+          restore-keys: | # Restore keys in case the main key doesn't match
+            ${{ runner.os }}-node-
+      # Install nodejs dependencies
+      - name: Install project dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true' # Condition: only run if the cache was NOT found
+        run: npm install
+      # Build lib
+      - name: Build Angular lib for production
+        run: npm run build @redkhat/timepicker
+      # Build demo
+      - name: Build Angular application demo
+        run: npm run build-gh
+      # Route Fix
+      - name: Rename index.html for routing
+        run: mv dist/demo/browser/index.html dist/demo/browser/404.html
+      # Deploy demo to Github Pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4.1.0
+        with:
+          build_dir: dist/demo/browser/
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
