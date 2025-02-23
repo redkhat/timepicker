@@ -35,9 +35,9 @@ export interface MouseTouchEvent {
     end$: Observable<PointerEvent>;
   } {
   const pointerDown$ = fromEvent<PointerEvent>(element, 'pointerdown');
-  const pointerMove$ = fromEvent<PointerEvent>(element, 'pointermove');
+  const pointerMove$ = fromEvent<PointerEvent>(document, 'pointermove');
   const pointerUp$ = fromEvent<PointerEvent>(document, 'pointerup');
-  const pointerLeave$ = fromEvent<PointerEvent>(element, 'pointerleave');
+  const pointerLeave$ = fromEvent<PointerEvent>(document, 'pointerleave');
 
   const start$ = pointerDown$;
   const move$ = pointerMove$;
