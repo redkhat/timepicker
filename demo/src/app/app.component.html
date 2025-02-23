@@ -29,7 +29,7 @@
       </section>
     </mat-card-content>
   </mat-card>
-  <mat-card class="max-card">
+  <mat-card [ngClass]="{ 'max-card2': orientation() === 'landscape', 'max-card': orientation() === 'portrait' }">
     <mat-card-content class="double-section">
       <section>
         <h3 class="example-h3">Inline Timepocker</h3>

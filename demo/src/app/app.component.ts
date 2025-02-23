@@ -6,13 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RkClock, RkTimepicker, RkTimepickerInput, RkTimepickerToggle } from '@redkhat/timepicker';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DOCUMENT, JsonPipe } from '@angular/common';
+import { DOCUMENT, JsonPipe, NgClass } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'rk-root',
-  imports: [MatButtonModule, MatInputModule, RkTimepickerToggle, MatToolbarModule, MatIconModule, ReactiveFormsModule, RkClock, JsonPipe, FormsModule, RkTimepickerInput, MatFormFieldModule, MatRadioModule, RkTimepicker, MatCardModule],
+  imports: [MatButtonModule, MatInputModule, NgClass, RkTimepickerToggle, MatToolbarModule, MatIconModule, ReactiveFormsModule, RkClock, JsonPipe, FormsModule, RkTimepickerInput, MatFormFieldModule, MatRadioModule, RkTimepicker, MatCardModule],
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
