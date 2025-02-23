@@ -21,12 +21,11 @@
 }
 
 rk-timepicker {
-  display: none;
+  display: none; // Hides the rk-timepicker component by default
 }
 
-
 .rk-timepicker {
-  display: block;
+  display: block; // Shows the component when the .rk-timepicker class is applied
   width: 328px;
   padding: 24px;
   border-radius: var(--mat-sys-corner-extra-large);
@@ -52,13 +51,17 @@ rk-timepicker {
 
 .rk-timepicker-headline {
   width: 100%;
-}
-
-.rk-timepicker-headline, .rk-time-input-support-label {
   font: var(--mat-sys-label-medium);
   color: var(--mat-sys-on-surface-variant);
   align-self: flex-start;
   margin-bottom: 20px;
+}
+
+.rk-time-input-support-label {
+  @extend .rk-timepicker-headline; // Reuses styles from rk-timepicker-headline
+  position: absolute;
+  bottom: -40px;
+  width: auto; // Adjusts width automatically to the content
 }
 
 // input
@@ -75,12 +78,8 @@ rk-timepicker {
   position: relative;
 }
 
-.rk-time-input-support-label {
-  position: absolute;
-  bottom: -40px;
-}
-
-.rk-time-selector-container {
+%rk-time-selector-base {
+  // Placeholder for reusable styles of time selectors
   width: 98px;
   height: 78px;
   border-radius: var(--mat-sys-corner-small);
@@ -93,12 +92,15 @@ rk-timepicker {
   &:hover {
     opacity: 0.8;
   }
+  & > input {
+    all: unset;
+    width: 100%;
+    text-align: center;
+  }
 }
 
-.rk-time-selector-container > input {
-  all: unset;
-  width: 100%;
-  text-align: center;
+.rk-time-selector-container {
+  @extend %rk-time-selector-base;
 }
 
 .rk-time-selector-container-selected {
@@ -120,7 +122,9 @@ rk-timepicker {
   border: 1px solid var(--mat-sys-outline);
   font: var(--mat-sys-title-medium);
 }
-.rk-period-selector {
+
+%rk-period-selector-base {
+  // Placeholder for reusable styles of period selectors
   width: 48px;
   height: 37px;
   display: flex;
@@ -132,13 +136,19 @@ rk-timepicker {
   }
 }
 
+.rk-period-selector {
+  @extend %rk-period-selector-base;
+}
+
 .rk-period-selector-container > div:first-child {
+  @extend %rk-period-selector-base; // Reuses base styles
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom: 1px solid var(--mat-sys-outline);
 }
 
 .rk-period-selector-container > div:last-child {
+  @extend %rk-period-selector-base; // Reuses base styles
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
@@ -162,7 +172,8 @@ rk-timepicker {
 }
 
 .rk-dial-animated {
-  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, height 250ms ease-in-out, margin 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out,
+    height 250ms ease-in-out, margin 250ms ease-in-out;
 }
 
 .rk-dial-closed {
@@ -177,7 +188,8 @@ rk-timepicker {
   height: 256px;
 }
 
-.rk-clock-dial-label {
+%rk-clock-dial-label-base {
+  // Placeholder for reusable styles of dial labels
   width: 48px;
   height: 48px;
   text-align: center;
@@ -186,6 +198,10 @@ rk-timepicker {
   justify-content: center;
   align-items: center;
   font: var(--mat-sys-body-large);
+}
+
+.rk-clock-dial-label {
+  @extend %rk-clock-dial-label-base;
   color: var(--mat-sys-on-surface);
 }
 
@@ -198,8 +214,9 @@ rk-timepicker {
   z-index: 3;
   cursor: pointer;
   .rk-clock-dial-label {
+    @extend %rk-clock-dial-label-base; // Reuses base styles
     color: var(--mat-sys-on-primary);
-  } 
+  }
 }
 
 .rk-dial-selector {
@@ -230,7 +247,7 @@ rk-timepicker {
 }
 
 .rk-timepicker-mode-button {
-  color: var(--mat-sys-on-surface-variant)
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .rk-timepicker-landscape:not(.rk-timepicker-editable) {
@@ -262,7 +279,7 @@ rk-timepicker {
     border-bottom-left-radius: 8px;
     border-right: 1px solid var(--mat-sys-outline);
   }
-  
+
   .rk-period-selector-container > div:last-child {
     width: 100%;
     border-radius: 0px;
