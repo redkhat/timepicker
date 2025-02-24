@@ -49,15 +49,6 @@ jobs:
           build_dir: dist/demo/browser/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Publish to npm
-      - name: Publish to npm
-        run: |
-          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
-          npm publish dist/redkhat/timepicker --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       # Publish to GitHub Packages
       - name: Publish to GitHub Packages
         run: |
