@@ -169,6 +169,7 @@ rk-timepicker {
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
+  touch-action: pinch-zoom;
 }
 
 .rk-dial-animated {
