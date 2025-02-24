@@ -23,5 +23,6 @@
     }
   },
   "sideEffects": false,
+  "private": false,
   "license": "MIT"
 }
