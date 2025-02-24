@@ -1,6 +1,6 @@
 {
   "name": "@redkhat/timepicker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": ["angular", "material", "timepicker", "material3", "material 3", "materialyou", "material you", "angular19", "angular 19", "clock"],
   "repository": {
     "type": "git",
