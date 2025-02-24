@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
         @if (!editable()) {
           {{value().hours.toString().padStart(2, '0')}}
         } @else {
-          <input type="text" maxlength="2" #inputH [value]="hours()" (focus)="selectedChange('hours')" (input)="onHoursInput($event)" (blur)="onHoursBlur()" name="hours">
+          <input type="number" maxlength="2" #inputH [value]="hours()" (focus)="selectedChange('hours')" (input)="onHoursInput($event)" (keydown)="handleKeydown($event, 'hours')" (blur)="onHoursBlur()" name="hours">
         }
       </div>
       @if (editable()) {
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
         @if (!editable()) {
           {{value().minutes.toString().padStart(2, '0')}}
         } @else {
-          <input type="text" maxlength="2" #inputM [value]="minutes()" (focus)="selectedChange('minutes')" (input)="onMinutesInput($event)" (blur)="onMinutesBlur()" name="minutes">
+          <input type="number" maxlength="2" #inputM [value]="minutes()" (focus)="selectedChange('minutes')" (input)="onMinutesInput($event)" (keydown)="handleKeydown($event, 'minutes')" (blur)="onMinutesBlur()" name="minutes">
         }
       </div>
       @if (editable()) {
@@ -147,6 +147,16 @@ export class RkTimepickerInputLabel {
       newDate.setHours(hoursN);
       newDate.setMinutes(minutesN);
       this.currentTime.set(newDate);
+    }
+  }
+  handleKeydown(event: KeyboardEvent, selected: string) {
+    if (['Enter', 'Escape', 'Tab'].includes(event.code)) {
+      if(selected === 'hours') {
+        this.onHoursBlur();
+        this.selected.set('minutes');
+      } else {
+        this.onMinutesBlur();
+      }
     }
   }
 

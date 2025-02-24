@@ -63,7 +63,7 @@ export class RkTimepickerDial {
   private _currentDial = signal(1);
   private _currentDegree: WritableSignal<number> = signal(0);
   private _loading = signal(false);
-  private readonly _motion = 400;
+  private readonly _motion = 250;
   private readonly _radius = 128;
   private readonly _labelSize = 48;
   
@@ -153,6 +153,9 @@ export class RkTimepickerDial {
     await this._rotateAnimation(this._currentDegree(), snapDegrees, this._motion / 2, 2);
     this._currentDegree.set(snapDegrees);
     this._loading.set(false);
+    if(this.selected() === 'hours') {
+      this.selectedTime.set('minutes');
+    }
   }
 
   private _fillDial(dial: HTMLElement, labels: number[], withClean: boolean, inset: number = 2) {

@@ -143,6 +143,7 @@ export class RkTimepicker {
       }
       this._isOpen.set(false);
       this.closed.emit();
+      this.selected.set('hours');
       input.focus();
     });
   }
