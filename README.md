@@ -8,6 +8,16 @@ For features like time ranges or specific hour selection, Angular's official met
 ## Demo
  [RkTimepicker](https://redkhat.github.io/timepicker/)
 
+## Preview
+
+### Light Theme
+
+![Light Theme](https://github.com/redkhat/timepicker/blob/main/light-preview.png)
+
+## Dark Theme
+
+![Dark Theme](https://github.com/redkhat/timepicker/blob/main/dark-preview.png)
+
 ## Install components and dependencies
 
 First install the Angular Material.
