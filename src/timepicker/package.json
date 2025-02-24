@@ -8,7 +8,7 @@
   },
   "homepage": "https://redkhat.github.io/timepicker/",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   },
   "peerDependencies": {
     "@angular/common": "^19.1.0",
