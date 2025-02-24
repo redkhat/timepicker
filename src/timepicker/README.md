@@ -1,8 +1,8 @@
 # Redkhat Timepicker
 
-This project contains a series of time selection components. The timepicker allows users to select a time from a clock-like interface. The timepicker is built using `Angular 19+` and `Angular Material 19+`.
+This project contains a series of time selection components. The timepicker allows users to select a time from a clock-like interface. The timepicker is built using **Angular 19+** and **Angular Material 19+**.
 
-> **_NOTE:_**  `RkTimepicker` and `RKClock` is not a substitute for the standard Angular Material timepicker.
+> **_NOTE:_**  **RkTimepicker** and **RKClock** is not a substitute for the standard Angular Material timepicker.
 For features like time ranges or specific hour selection, Angular's official methods are recommended.
 
 ## Demo
@@ -24,7 +24,7 @@ npm install @redkhat/timepicker
 
 ## Configuration
 
-`RkTimepicker` and `RkClock` require Angular Material themes using their Material Design 3 variant. You must also import the SCSS file from the @redkhat/timepicker library.
+**RkTimepicker** and **RkClock** require Angular Material themes using their Material Design 3 variant. You must also import the SCSS file from the @redkhat/timepicker library.
 ```json
 // your angular.json
 "styles": [
@@ -36,12 +36,12 @@ npm install @redkhat/timepicker
 
 ## Usage 
 
-` @redkhat/timepicker` provides two principal components: `RkTimepicker` and `RkClock`.
+**@redkhat/timepicker** provides two principal components: **RkTimepicker** and **RkClock**.
 RkTimepicker is used together with an input field to display a dialog with the clock interface. RkClock is a standalone(inlined) clock interface.
 
 ### Connecting a timepicker to an input
 
-1. Import `RkTimepicker`, `RkTimepickerInput`, `RkTimepickerToggle` in your component.
+1. Import **RkTimepicker**, **RkTimepickerInput**, **RkTimepickerToggle** in your component.
 2. Add `<rk-timepicker>` and `<rk-timepicker-toggle>` to your template.
 3. Export a reference of `<rk-timepicker>`, in this case, we use `#picker`.
 4. Add the `[rkTimepicker]` directive to the input field and bind it to the timepicker reference.
@@ -56,9 +56,9 @@ RkTimepicker is used together with an input field to display a dialog with the c
 </mat-form-field>
 ```
 
-### Using timecker without `RkTimepickerToggle` component
+### Using timecker without **RkTimepickerToggle** component
 
-`RkTimepicker` component exposes a public method `open()` to open the timepicker dialog. You can use this method to open the timepicker dialog from a custom button or any other component.
+**RkTimepicker** component exposes a public method `open()` to open the timepicker dialog. You can use this method to open the timepicker dialog from a custom button or any other component.
 
 ```html
 <mat-form-field>
@@ -71,9 +71,9 @@ RkTimepicker is used together with an input field to display a dialog with the c
 </mat-form-field>
 ```
 
-### Using timepicker inline with `RkClock` component
+### Using timepicker inline with **RkClock** component
 
-If you want to use the clock interface inline in your template you can use the `RkClock` component. This component have an input model named `time` to bind the selected time (unlike `RkTimepicker` where `time` is a optional input used to set the initial time).
+If you want to use the clock interface inline in your template you can use the **RkClock** component. This component have an input model named `time` to bind the selected time (unlike `RkTimepicker` where `time` is a optional input used to set the initial time).
 
 ```html
 <rk-clock [(time)]="time">
@@ -82,7 +82,7 @@ If you want to use the clock interface inline in your template you can use the `
 
 ### Using timepicker with Template-driven and Reactive Forms
 
-`RkTimepicker` can be used with Angular forms thanks to the directive `RkTimepickerInput` that implements the `ControlValueAccessor` interface, this allows the timepicker to work with both template-driven and reactive forms and also comes with a custom validator to validate the time input.
+**RkTimepicker** can be used with Angular forms thanks to the directive **RkTimepickerInput** that implements the `ControlValueAccessor` interface, this allows the timepicker to work with both template-driven and reactive forms and also comes with a custom validator to validate the time input.
 ```html
 <mat-form-field class="example-full-width">
     <mat-label>Time</mat-label>
@@ -109,7 +109,7 @@ If you want to use the clock interface inline in your template you can use the `
 
 ### Integration with Datepicker
 
-`RkTimepicker` and `RkClock` can be used together with `MatDatepicker` to create a complete date and time selection interface. This is possible because these timepickers only modify the time part of the date object therefore you can use the same date object in the datepicker and timepicker.
+**RkTimepicker** and **RkClock** can be used together with **MatDatepicker** to create a complete date and time selection interface. This is possible because these timepickers only modify the time part of the date object therefore you can use the same date object in the datepicker and timepicker.
 
 ```html
 <mat-form-field>
@@ -127,9 +127,28 @@ If you want to use the clock interface inline in your template you can use the `
 </mat-form-field>
 ```
 
+## Internationalization (i18n)
+
+The **RkTimepickerInput** directive allows to input type text supports multiple time formats to make it easy to use in different regions. Below is an explanation of how it handles internationalization, including handling regional AM/PM markers.
+
+### 1. Supported Formats
+The input can interpret the following time string formats:
+- **Integers** (e.g., `"10"`, `"1030"`, `10`, `1030`) in 24-hour format (up to 23:59).
+- **Space-separated numbers** (e.g., `"10 30"`) in **HH MM** format.
+- **Colon-separated numbers** (e.g., `"10:30"`) in **HH:MM** format.
+- **Formats with regional AM/PM markers**, either at the start or the end of the time string (e.g., `"10:30am"` `"10:30 AM"`, `"am 10:30"`, `"午後3:25:00"`, `"10:30 du matin"`).
+
+### 2. Normalization of Digits
+**Note:** The directive normalizes Arabic numerals (Unicode range `\u0660-\u0669`) to their Western counterparts before processing the time. 
+
+For example, if a user enters a time string in Arabic numerals like:
+
+- **Input:** `"٧:١٥:٣٠ م"` (in Arabic, equivalent to "7:15:30 PM")
+- **Output (Date format):** The time is converted to `Date` format and interpreted as `19:15`.
+
 ## RkTimepickerInput Directive
 
-Used to connect an input field to a `RkTimepicker` component.
+Used to connect an input field to a **RkTimepicker** component.
 
 Selector: `input[rkTimepicker]`
 
@@ -195,7 +214,7 @@ Selector: `rk-timepicker-toggle`
 
 ## RkClock Component
 
-A standalone clock interface to use inline in your template. Unlike `RkTimepicker`, `RkClock` no has actions buttons to confirm or cancel the time selected, therefore `RkClock` will update the time automatically while the user interacts with the clock.
+A standalone clock interface to use inline in your template. Unlike **RkTimepicker**, **RkClock** no has actions buttons to confirm or cancel the time selected, therefore **RkClock** will update the time automatically while the user interacts with the clock.
 
 Selector: `rk-clock`
 
